@@ -1,5 +1,6 @@
 # OMDb-WPF-Download-Movie-Posters
 
+Download the standalone build for windows [here](https://github.com/chilledwilba/OMDb-WPF-Download-Movie-Posters/releases/download/v1.0/OMDb-Downloader-Windows-V1.zip)
 
 ## Dependencies
 
