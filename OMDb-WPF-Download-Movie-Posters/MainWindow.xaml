@@ -1,0 +1,107 @@
+﻿<Window x:Class="OMDb_WPF_Download_Movie_Posters.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OMDb_WPF_Download_Movie_Posters"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+
+        HorizontalContentAlignment="Stretch" 
+        VerticalContentAlignment="Stretch"
+        WindowStartupLocation="CenterScreen"
+
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Border Padding="10">
+
+        <DockPanel>
+            <Grid DockPanel.Dock="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height ="Auto"/>
+                    <RowDefinition Height ="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!--Buttons-->
+                <Button Grid.Column="0" x:Name="SelectFolderButton"  
+                        Content="Select Folder" 
+                        Click="SelectFolder_Button_Click"
+                        Padding="0" Margin="10,0"/>
+
+                <Button Grid.Column="1" x:Name="OMDbSearchButton"
+                        Content="OMDb Search"   
+                        Click="LookupOMDB_Button_Click"
+                        Padding="0" Margin="10,0"/>
+
+                <Button Grid.Column="2" x:Name="DownloadPostersButton"    
+                        Content="Download Posters"  
+                        Click="DownloadPosters_Button_Click"    
+                        Padding="0" Margin="10,0"/>
+
+                <!--Labels-->
+                <Label Grid.Column="0" Grid.Row="1" Padding="0" Margin="0,10" Name="SelectFolderLabel"
+                       VerticalAlignment="Center" HorizontalAlignment="Center" 
+                       VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                       >Number of Movies:
+                </Label>
+
+                <Label Grid.Column="1" Grid.Row="1" Padding="0" Margin="0,10" Name="OMDbSearchLabel" 
+                       VerticalAlignment="Center" HorizontalAlignment="Center" 
+                       VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                       >Lookup | Success: 0 Fail: 0
+                </Label>
+
+                <Label Grid.Column="2" Grid.Row="1" Padding="0" Margin="0,10" Name="DownloadPostersLabel"
+                       VerticalAlignment="Center" HorizontalAlignment="Center" 
+                       VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                       >Download | Success: 0 Fail: 0
+                </Label>
+            </Grid>
+
+            <Grid DockPanel.Dock="Bottom" Margin="10,10,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!--API KEY-->
+                <Label Grid.Column="0" Padding="0" Margin="0" 
+                       VerticalAlignment="Center" HorizontalAlignment="Left" 
+                       VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
+                       >Enter OMDb API KEY:
+                </Label>
+
+                <TextBox Grid.Column="1" Padding="0" Margin="10,0,0,0" Name="APIKEYTextBox"/>
+            </Grid>
+
+            <!--Movies List-->
+            <DataGrid Name="MoviesDG" AutoGenerateColumns="False" Margin="0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Title" Binding="{Binding FileMovieTitle}"/>
+                    <DataGridTextColumn Header="Year"  Binding="{Binding FileYear}" />
+
+                    <DataGridTextColumn Header="Search"  Binding="{Binding omdbResults.Response}" />
+                    <DataGridTextColumn Header="Download"  Binding="{Binding PosterDownload}"/>
+
+                    <DataGridTextColumn Header="Title"  Binding="{Binding omdbResults.Title}" />
+                    <DataGridTextColumn Header="Year" Binding="{Binding omdbResults.Year}"/>
+
+                    <DataGridTextColumn Header="File Name" Binding="{Binding FileName}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+    </Border>
+</Window>
