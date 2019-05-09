@@ -43,7 +43,7 @@
 
                 <Button Grid.Column="1" x:Name="OMDbSearchButton"
                         Content="OMDb Search"   
-                        Click="LookupOMDB_Button_Click"
+                        Click="SearchOMDB_Button_Click"
                         Padding="0" Margin="10,0"/>
 
                 <Button Grid.Column="2" x:Name="DownloadPostersButton"    
