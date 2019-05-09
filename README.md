@@ -9,3 +9,8 @@ Requires [OMDb API Key](http://www.omdbapi.com/apikey.aspx)
 NuGet Packages
 * Newtonsoft.Json
 * MaterialDesignThemes
+
+## Examples
+![](Pics/Gif-1.gif)
+
+![](Pics/PNG-1.png)
